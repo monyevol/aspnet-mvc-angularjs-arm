@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Rent Contract Details";
+    Layout = "~/Views/Shared/_Management.cshtml";
+}
+
+<h2 class="bold blue common-font text-center">Rent Contract Details</h2>
+
+<hr />
+
+<div class="containment" ng-controller="RentContractsController">
+    <table width="400">
+        <tr>
+            <td class="bold medium common-font text-right">Rent Contract Id</td>
+            <td class="x-small">&nbsp;</td>
+            <td><input type="number" class="form-control small" ng-model="contractId" /></td>
+            <td class="x-small">&nbsp;</td>
+            <td><input type="submit" value="Find Rent Contract" class="btn btn-primary" ng-click="findRentContract()" /></td>
+        </tr>
+    </table>
+    <hr />
+    <dl class="dl-horizontal common-font">
+        <dt>Contract #</dt>
+        <dd><span ng-bind="contractNumber"></span></dd>
+
+        <dt>Employee #</dt>
+        <dd><span ng-bind="emplNumber"></span></dd>
+
+        <dt>Contract Date</dt>
+        <dd><span ng-bind="contractDate | date : 'EEEE, MMMM dd, yyyy'"></span></dd>
+
+        <dt>First Name</dt>
+        <dd><span ng-bind="firstName"></span></dd>
+
+        <dt>Last Name</dt>
+        <dd><span ng-bind="lastName"></span></dd>
+
+        <dt>Marital Status</dt>
+        <dd><span ng-bind="maritalStatus"></span></dd>
+
+        <dt>Children</dt>
+        <dd><span ng-bind="nbrOfChildren"></span></dd>
+
+        <dt>Unit #</dt>
+        <dd><span ng-bind="unitNumber"></span></dd>
+
+        <dt>Rent Start Date</dt>
+        <dd><span ng-bind="rsd | date : 'EEEE, MMMM dd, yyyy'"></span></dd>
+    </dl>
+</div>
+
+<hr />
+
+<p class="text-center">
+    @Html.ActionLink("Rent Contracts", "Index") ::
+    @Html.ActionLink("Process New Rent Contract", "Create") ::
+    @Html.ActionLink("Update a Rent Contract", "Edit") ::
+    @Html.ActionLink("Delete a Rent Contract", "Delete")
+</p>

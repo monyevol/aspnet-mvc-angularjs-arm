@@ -1,0 +1,1 @@
+﻿var appRentManagement = angular.module("RentManagement", []);

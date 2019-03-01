@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Delete Rent Contract";
+    Layout = "~/Views/Shared/_Management.cshtml";
+}
+
+<h2 class="bold common-font blue text-center">Delete/Cancel Rent Contract</h2>
+
+<hr />
+
+<div class="containment" ng-controller="RentContractsController">
+    <table width="400">
+        <tr>
+            <td class="bold medium common-font text-right">Rent Contract Id</td>
+            <td class="x-small">&nbsp;</td>
+            <td><input type="number" class="form-control small" ng-model="contractId" /></td>
+            <td class="x-small">&nbsp;</td>
+            <td><input type="submit" value="Find Rent Contract" class="btn btn-primary" ng-click="findRentContract()" /></td>
+        </tr>
+    </table>
+    <hr />
+    <dl class="dl-horizontal common-font">
+        <dt>Contract #</dt>
+        <dd><span ng-bind="contractNumber"></span></dd>
+
+        <dt>Employee #</dt>
+        <dd><span ng-bind="emplNumber"></span></dd>
+
+        <dt>Contract Date</dt>
+        <dd><span ng-bind="contractDate | date : 'EEEE, MMMM dd, yyyy'"></span></dd>
+
+        <dt>First Name</dt>
+        <dd><span ng-bind="firstName"></span></dd>
+
+        <dt>Last Name</dt>
+        <dd><span ng-bind="lastName"></span></dd>
+
+        <dt>Marital Status</dt>
+        <dd><span ng-bind="maritalStatus"></span></dd>
+
+        <dt>Children</dt>
+        <dd><span ng-bind="nbrOfChildren"></span></dd>
+
+        <dt>Unit #</dt>
+        <dd><span ng-bind="unitNumber"></span></dd>
+
+        <dt>Rent Start Date</dt>
+        <dd><span ng-bind="rsd | date : 'EEEE, MMMM dd, yyyy'"></span></dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <h3 class="common-font blue text-center">Are you sure you want to delete or cancel this rent contract?</h3>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete this Rent Contract"
+                   class="btn btn-primary" ng-click="deleteRentContract()" /> ::
+            @Html.ActionLink("Rent Contracts", "Index", null, htmlAttributes: new { @class = "arm-lead" })
+        </div>
+    }
+</div>
+
+<hr />
+
+<p class="text-center">
+    @Html.ActionLink("Rent Contracts", "Index") ::
+    @Html.ActionLink("Process New Rent Contract", "Create") ::
+    @Html.ActionLink("Update a Rent Contract", "Edit") ::
+    @Html.ActionLink("Review a Rent Contract", "Delete")
+</p>

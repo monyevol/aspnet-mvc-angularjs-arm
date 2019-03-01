@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "Edit Rent Contract";
+    Layout = "~/Views/Shared/_Management.cshtml";
+}
+
+<h2 class=" bold blue common-font text-center">Edit/Update Rent Contract</h2>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal common-font" ng-controller="RentContractsController">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label for="contractNumber" class="control-label col-md-5 blue">Contract #</label>
+            <div class="col-md-2">
+                <input type="text" ng-model="contractNumber" class="form-control" />
+            </div>
+            <div class="col-md-1">
+                <input type="button" value="Find" class="btn btn-primary" ng-click="locateRentContract()" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="contractNumber" class="control-label col-md-5 blue">Rent Contract Id</label>
+            <div class="col-md-7">
+                <input type="text" ng-model="contractId" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="emplNbr" class="control-label col-md-5 blue">Employee #</label>
+            <div class="col-md-7">
+                <input type="text" ng-model="emplNumber"
+                       class="form-control" ng-blur="findEmployee()" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-5 blue">Employee Details</label>
+            <div class="col-md-7">
+                <input type="text" class="form-control" ng-model="employeeDetails" disabled />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="contractDate" class="control-label col-md-5 blue">Contract Date</label>
+            <div class="col-md-7">
+                <input type="text" ng-model="contractDate" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="firstName" class="control-label col-md-5 blue">First Name</label>
+            <div class="col-md-7">
+                <input type="text" ng-model="firstName" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName" class="control-label col-md-5 blue">Last Name</label>
+            <div class="col-md-7">
+                <input type="text" ng-model="lastName" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="maritalStatus" class="control-label col-md-5 blue">Marital Status</label>
+            <div class="col-md-7">
+                <select ng-model="maritalStatus" class="form-control">
+                    <option value="Single">Single</option>
+                    <option value="Widdow">Widdow</option>
+                    <option value="Married">Married</option>
+                    <option value="Unknown">Unknown</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Separated">Separated</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="nbrOfChildren" class="control-label col-md-5 blue">Number of Children</label>
+            <div class="col-md-7">
+                <input type="text" ng-model="nbrOfChildren" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="unitNbr" class="control-label col-md-5 blue">Unit Number</label>
+            <div class="col-md-7">
+                <input type="text" ng-model="unitNumber" class="form-control" ng-blur="findApartment()" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-5 blue">Apartment Details</label>
+            <div class="col-md-7">
+                <textarea ng-model="apartDetails" rows="4" disabled class="form-control unit-details"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="rentStart" class="control-label col-md-5 blue">Rent Start Date</label>
+            <div class="col-md-7">
+                <input type="text" ng-model="rsd" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-5">
+                @Html.ActionLink("Rent Contracts", "Index", null, htmlAttributes: new { @class = "arm-lead" })
+            </label>
+            <div class="col-md-7">
+                <input type="submit" value="Save Updated Rent Contract"
+                       class="btn btn-primary" ng-click="updateRentContract()" />
+            </div>
+        </div>
+    </div>
+}
+
+<hr />
+
+<p class="text-center">
+    @Html.ActionLink("Rent Contracts", "Index") ::
+    @Html.ActionLink("Process a New Rent Contract", "Create") ::
+    @Html.ActionLink("Review a Rent Contract", "Details") ::
+    @Html.ActionLink("Delete/Cancel a Rent Contract", "Delete")
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

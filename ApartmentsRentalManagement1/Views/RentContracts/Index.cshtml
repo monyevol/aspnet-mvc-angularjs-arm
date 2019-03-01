@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Rent Contracts";
+    Layout = "~/Views/Shared/_Management.cshtml";
+}
+
+<h2 class="bold blue common-font text-center">Rent Contracts</h2>
+
+<table class="table table-hover common-font" ng-controller="RentContractsController">
+    <tr>
+        <th class="text-center">Rent Contract Id</th>
+        <th class="text-center">Contract #</th>
+        <th class="text-center">Employee #</th>
+        <th class="text-center">Contract Date</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Marital Status</th>
+        <th class="text-center">Children</th>
+        <th class="text-center">Unit #</th>
+        <th class="text-center">Rent Start Date</th>
+    </tr>
+    <tr ng-repeat="rent in contracts">
+        <td class="text-center"><span ng-bind="rent.RentContractId"></span></td>
+        <td class="text-center"><span ng-bind="rent.ContractNumber"></span></td>
+        <td class="text-center"><span ng-bind="rent.EmployeeNumber"></span></td>
+        <td class="text-center"><span ng-bind="rent.ContractDate | date:'MM/dd/yyyy'"></span></td>
+        <td><span ng-bind="rent.FirstName"></span></td>
+        <td><span ng-bind="rent.LastName"></span></td>
+        <td><span ng-bind="rent.MaritalStatus"></span></td>
+        <td class="text-center"><span ng-bind="rent.NumberOfChildren"></span></td>
+        <td class="text-center"><span ng-bind="rent.UnitNumber"></span></td>
+        <td class="text-center"><span ng-bind="rent.RentStartDate | date:'MM/dd/yyyy'"></span></td>
+    </tr>
+</table>
+
+<hr />
+
+<p class="text-center">
+    @Html.ActionLink("Process New Rent Contract", "Create", null, htmlAttributes: new { @class = "arm-lead" }) ::
+    @Html.ActionLink("Review a Rent Contract", "Details", null, htmlAttributes: new { @class = "arm-lead" }) ::
+    @Html.ActionLink("Update a Rent Contract", "Edit", null, htmlAttributes: new { @class = "arm-lead" }) ::
+    @Html.ActionLink("Delete/Cancel a Rent Contract", "Delete", null, htmlAttributes: new { @class = "arm-lead" })
+</p>
